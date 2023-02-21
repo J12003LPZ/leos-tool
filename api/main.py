@@ -1,12 +1,20 @@
 import openai
 from flask import Flask, request, render_template
+from dotenv import load_dotenv
+import os
+
+# Load environment variables from .env file.
+load_dotenv()
+
+# Get the API key from the environment variable OPENAI_API_KEY.
+OPENAI_API_KEY = os.getenv("OPENAI_API_KEY")
 
 # Initialize Flask app
 app = Flask(__name__, template_folder="../templates",
             static_folder="../static")
 
 # Set OpenAI API key
-openai.api_key = "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"
+openai.api_key = OPENAI_API_KEY
 
 # Set up Jinja2 template
 
@@ -44,8 +52,6 @@ def summarize():
         summary = "Unable to generate summary. Please enter a longer input text."
 
     return render_template("index.html", text=text, summary=summary)
-
-# Check grammar using LanguageTool
 
 
 # Start Flask app
