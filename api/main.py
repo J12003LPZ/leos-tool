@@ -12,7 +12,7 @@ openai.api_key = "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"
 # Set up Jinja2 template
 @app.route("/")
 def index():
-    return render_template("index.html")
+    return render_template("grammar_checker.html")
 
 
 @app.route('/<string:page_name>')
