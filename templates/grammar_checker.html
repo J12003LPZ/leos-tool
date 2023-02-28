@@ -1,0 +1,75 @@
+{% extends './layout/layout.html' %} {% block head %} {% block title %} {{ title
+}} {% endblock title %} {% endblock head %} {% block body %}
+
+<div class="container text-center">
+  <div class="row">
+    <div class="col">
+      <div class="container">
+        <form
+          action="/grammar_checker"
+          method="post"
+          enctype="multipart/form-data"
+        >
+          <h1>Your text:</h1>
+          <textarea
+            class="form-control input"
+            name="text"
+            rows="10"
+            cols="50"
+            autofocus
+            required
+          >
+            {{ text|default('') }}
+          </textarea>
+          <div class="container mt-3">
+            <button class="btn btn-primary" type="submit">Check grammar</button>
+          </div>
+        </form>
+      </div>
+    </div>
+    <div class="col">
+      <div class="container">
+        <h1>Text fixed:</h1>
+        <textarea
+          id="summary"
+          name="summary"
+          class="form-control input"
+          rows="10"
+          cols="50"
+        >
+          {{ summary|default('') }}
+        </textarea>
+      </div>
+      <div class="container mt-3">
+        <button class="btn btn-primary" onclick="copyToClipboard()">
+          Copy to clipboard
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    function copyToClipboard() {
+      var summary = document.getElementById("summary");
+      summary.select();
+      document.execCommand("copy");
+    }
+
+    function updateRangeLabel() {
+      var rangeInput = document.getElementById("summary-length");
+      var rangeLabel = document.getElementById("range-label");
+      rangeLabel.textContent = parseInt(rangeInput.value);
+    }
+
+    function updateFormPostValue() {
+      var option = document.getElementById("option").value;
+      var form_post = document.getElementById("form_post");
+      form_post.value = option;
+    }
+    document
+      .getElementById("option")
+      .addEventListener("change", updateFormPostValue);
+  </script>
+</div>
+
+{% endblock body %}

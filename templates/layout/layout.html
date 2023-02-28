@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Leo's Tool</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD"
+      crossorigin="anonymous"
+    />
+    <!-- Boxiocns CDN Link -->
+    <link
+      href="https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="{{url_for('static',
+    filename="css/index.css")}}" />
+  </head>
+  <body>
+    <div class="sidebar close">
+      <div class="logo-details">
+        <i class="bx bx-code-alt mt-5"></i>
+        <span class="logo_name">Leo's Tool</span>
+      </div>
+      <ul class="nav-links">
+        <li>
+          <a href="/">
+            <i class="bx bx-home"></i>
+            <span class="link_name">Home</span>
+          </a>
+        </li>
+
+        <li>
+          <a href="/grammar_checker">
+            <i class="bx bx-text"></i>
+            <span class="link_name">Grammar Checker</span>
+          </a>
+          <ul class="sub-menu blank">
+            <li>
+              <a class="link_name" href="/grammar_checker">Grammar Checker</a>
+            </li>
+          </ul>
+        </li>
+
+        <li>
+          <a href="/plagiarism_checker">
+            <i class="bx bx-search-alt"></i>
+            <span class="link_name">Plagiarism Checker</span>
+          </a>
+          <ul class="sub-menu blank">
+            <li>
+              <a class="link_name" href="/plagiarism_checker"
+                >Plagiarism Checker</a
+              >
+            </li>
+          </ul>
+        </li>
+
+        <li>
+          <a href="/summarizer">
+            <i class="bx bx-book-content"></i>
+            <span class="link_name">Summarizer</span>
+          </a>
+          <ul class="sub-menu blank">
+            <li><a class="link_name" href="/summarizer">Summarizer</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="/translator">
+            <i class="bx bx-user-voice"></i>
+            <span class="link_name">Translator</span>
+          </a>
+          <ul class="sub-menu blank">
+            <li><a class="link_name" href="/translator">Translator</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="/paraphraser">
+            <i class="bx bx-paragraph"></i>
+            <span class="link_name">Paraphraser</span>
+          </a>
+          <ul class="sub-menu blank">
+            <li><a class="link_name" href="/paraphraser">Paraphraser</a></li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+    <section class="home-section">
+      <div class="home-content">
+        <i class="bx bx-menu"></i>
+        <span class="text">Leo's Tool</span>
+      </div>
+
+      <div>{% block body %} {% endblock %}</div>
+    </section>
+
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
+      crossorigin="anonymous"
+    ></script>
+
+    <script>
+      let arrow = document.querySelectorAll(".arrow");
+      for (var i = 0; i < arrow.length; i++) {
+        arrow[i].addEventListener("click", (e) => {
+          let arrowParent = e.target.parentElement.parentElement; //selecting main parent of arrow
+          arrowParent.classList.toggle("showMenu");
+        });
+      }
+      let sidebar = document.querySelector(".sidebar");
+      let sidebarBtn = document.querySelector(".bx-menu");
+      console.log(sidebarBtn);
+      sidebarBtn.addEventListener("click", () => {
+        sidebar.classList.toggle("close");
+      });
+    </script>
+  </body>
+</html>

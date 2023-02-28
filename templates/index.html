@@ -1,55 +1,14 @@
-<!DOCTYPE html>
-<html>
-    <head>
-        <title>Text Summarizer</title>
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-    </head>
-    <body>
-        <form action="/summarize" method="post">
-            <label for="text">Text:</label>
-            <br>
-            <textarea id="text" name="text" rows="10" cols="50">{{ text|default('') }}</textarea>
-            <br>
-            <label for="summary-length">Summary Length:</label>
-            <br>
-            <label for="summary-length">Summary Length:</label>
-            <input type="range"
-                   id="summary-length"
-                   name="summary-length"
-                   min="25"
-                   max="100"
-                   step="0.25"
-                   value="50"
-                   oninput="updateRangeLabel()">
-            <label id="range-label">50</label>
-            <br>
-            <br>
-            <input type="submit" value="Summarize">
-        </form>
-        <br>
-        <h1>Summary</h1>
-        <textarea id="summary" rows="10" cols="50">{{ summary }}</textarea>
-        <br>
-        <button onclick="copyToClipboard()">Copy to Clipboard</button>
-        <script>
-        function copyToClipboard() {
-            var summary = document.getElementById("summary");
-            summary.select();
-            document.execCommand("copy");
-        }
-
-    function updateRangeLabel() {
-  var rangeInput = document.getElementById("summary-length");
-  var rangeLabel = document.getElementById("range-label");
-  rangeLabel.textContent = parseInt(rangeInput.value);
-}
-
-        function updateFormPostValue() {
-    var option = document.getElementById("option").value;
-    var form_post = document.getElementById("form_post");
-    form_post.value = option;
-  }
-  document.getElementById("option").addEventListener("change", updateFormPostValue);
-        </script>
-    </body>
-</html>
+{% extends './layout/layout.html' %} {% block head %} {% block title %} {%
+endblock title%} {% endblock head %} {% block body %}
+<div class="container">
+  <h1>My grammar app</h1>
+  <p>
+    Introducing a powerful text analysis app that simplifies your writing
+    process. With features that include summarization, paraphrasing, grammar
+    checks, translation, and plagiarism detection, it's a must-have for anyone
+    looking to improve their writing skills. Save time and effort while
+    producing high-quality content with this all-in-one app. Use it now and take
+    your writing to the next level!
+  </p>
+</div>
+{% endblock %}
