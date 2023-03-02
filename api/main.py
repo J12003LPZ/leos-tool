@@ -7,7 +7,7 @@ app = Flask(__name__, template_folder="../templates",
             static_folder="../static")
 
 # Set OpenAI API key
-openai.api_key = "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"
+openai.api_key = "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"
 
 # Set up Jinja2 template
 @app.route("/")
